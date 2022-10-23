@@ -1,0 +1,12 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+platforms:
+  - name: dep11
+    box: generic/debian11
+provisioner:
+  name: ansible
+verifier:
+  name: testinfra

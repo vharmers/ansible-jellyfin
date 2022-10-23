@@ -1,0 +1,5 @@
+---
+- name: Fail on unsupported OS
+  ansible.builtin.fail:
+    msg: This role is not supported on your OS
+  when: ansible_os_family != "Debian"

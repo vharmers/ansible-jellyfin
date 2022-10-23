@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Valentijn Harmers
+  description: Role for installing The Jellyfin Software Media System
+  license: MIT
+  role_name: jellyfin
+  namespace: vharmers
+  min_ansible_version: "6.5"
+  platforms:
+    - name: Debian
+      versions:
+        - bullseye
+  galaxy_tags:
+    - media
+    - jellyfin
+dependencies: []

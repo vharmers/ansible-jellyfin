@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: Ensure latest package cache
+      ansible.builtin.apt:
+        update_cache: yes
+      become: yes
+      when: ansible_pkg_mgr == "apt"
+    - name: "Include vharmers.jellyfin"
+      ansible.builtin.include_role:
+        name: "vharmers.jellyfin"

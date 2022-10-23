@@ -1,0 +1,10 @@
+---
+- name: Ensure the jellyfin service is in the proper running state
+  ansible.builtin.service:
+    name: "{{ jellyfin_service }}"
+    state: "{{ jellyfin_enabled | ternary('started', 'stopped') }}"
+
+- name: Ensure the jellyfin service is in the proper startup state
+  ansible.builtin.service:
+    name: "{{ jellyfin_service }}"
+    enabled: "{{ jellyfin_enabled }}"

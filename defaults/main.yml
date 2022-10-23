@@ -1,0 +1,5 @@
+---
+jellyfin_enabled: yes
+jellyfin_service: jellyfin
+jellyfin_package: jellyfin
+jellyfin_repo: repo.jellyfin.org

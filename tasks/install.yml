@@ -1,0 +1,28 @@
+---
+- name: Ensure dependencies are installed
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - gnupg
+
+- name: Ensure Jellyfin repo key is installed
+  ansible.builtin.apt_key:
+    url: https://{{ jellyfin_repo }}/ubuntu/jellyfin_team.gpg.key
+    state: present
+
+- name: Lookup system architecture
+  ansible.builtin.command:
+    cmd: dpkg --print-architecture
+  changed_when: false
+  register: jellyfin_arch
+
+- name: Ensure Jellyfin repo is configured
+  ansible.builtin.apt_repository:
+    repo: "deb [arch={{ jellyfin_arch.stdout }}] https://{{ jellyfin_repo }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release | lower }} main"
+    state: present
+
+- name: Ensure Jellyfin is installed
+  ansible.builtin.package:
+    name: "{{ jellyfin_package }}"
+    state: present

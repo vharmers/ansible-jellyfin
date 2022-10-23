@@ -1,0 +1,25 @@
+---
+- name: Import validation tasks
+  ansible.builtin.import_tasks: validate.yml
+  become: no
+  tags:
+    - jellyfin
+    - validate
+    - jellyfin-validate
+    - always
+
+- name: Import installation tasks
+  ansible.builtin.import_tasks: install.yml
+  become: yes
+  tags:
+    - jellyfin
+    - install
+    - jellyfin-install
+
+- name: Import configuration tasks
+  ansible.builtin.import_tasks: configure.yml
+  become: yes
+  tags:
+    - jellyfin
+    - configure
+    - jellyfin-configure
